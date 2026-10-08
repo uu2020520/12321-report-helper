@@ -26,6 +26,14 @@
 
 **所有短信与通话数据均仅在设备本地处理，不上传任何服务器。** 应用不含任何统计、埋点或第三方 SDK。
 
+代码层面已核实：不存在任何 HTTP 客户端调用，仅有的网络行为是在 WebView 中打开 12321 官网；
+短信与通话数据只存在于内存，不落盘。详见 [SECURITY.md](SECURITY.md)。
+
+## 安全
+
+发现安全或隐私漏洞，请**不要开公开 Issue**，改用
+[Security Advisories](https://github.com/uu2020520/12321-report-helper/security/advisories/new) 私下报告。
+
 ## 下载
 
 从仓库右侧 **Releases** 页面下载最新 APK 安装即可。
@@ -78,4 +86,8 @@ org.gradle.java.home=<你的 JDK 路径>
 
 ## 许可证
 
-[MIT](LICENSE)
+[Apache License 2.0](LICENSE)，另见 [NOTICE](NOTICE)。
+
+简单地讲：你可以自由使用、修改、分发甚至商用，也可以用于闭源项目；
+需要保留许可证与版权声明，修改过的文件需注明改动；作者不承担任何担保责任。
+相比 MIT，Apache-2.0 额外提供了**明确的专利授权**。
