@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    android:orientation="vertical">
+
+    <!-- 高度用 wrap_content + minHeight，配合 SystemBarInsets.applyTopPadding() 适配全面屏。
+         补上 Toolbar 后 supportActionBar 才不为 null，返回按钮才能真正生效。 -->
+    <com.google.android.material.appbar.MaterialToolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minHeight="?attr/actionBarSize"
+        android:background="@color/primary"
+        android:titleTextColor="@android:color/white"
+        app:navigationIconTint="@android:color/white" />
+
+    <ScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/text_phone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_primary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/text_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/text_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/card_background"
+                android:padding="12dp"
+                android:textColor="@color/text_primary"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/text_spam_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:textColor="@color/primary"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/text_spam_level"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/danger"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="举报类型"
+                android:textColor="@color/text_primary"
+                android:textSize="15sp" />
+
+            <Spinner
+                android:id="@+id/spinner_report_type"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="6dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="举报内容"
+                android:textColor="@color/text_primary"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/edit_content"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/card_background"
+                android:gravity="top"
+                android:hint="填写举报内容"
+                android:inputType="textMultiLine"
+                android:padding="12dp" />
+
+            <EditText
+                android:id="@+id/edit_remark"
+                android:layout_width="match_parent"
+                android:layout_height="96dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/card_background"
+                android:gravity="top"
+                android:hint="备注"
+                android:inputType="textMultiLine"
+                android:padding="12dp" />
+
+            <Button
+                android:id="@+id/btn_report"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="20dp"
+                android:text="一键举报" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

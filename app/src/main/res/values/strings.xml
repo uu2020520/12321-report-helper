@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">12321一键举报</string>
+    <string name="accessibility_service_label">12321一键举报</string>
+    <string name="accessibility_service_description">辅助填写12321举报表单。</string>
+</resources>

@@ -1,0 +1,19 @@
+.gradle/
+build/
+app/build/
+# AGP 生成的 release 产物目录（output-metadata.json、baselineProfiles 等）
+app/release/
+local.properties
+keystore.properties
+*.jks
+*.keystore
+*.apk
+*.aab
+*.iml
+.idea/
+
+# 本地工具状态（AI 助手的工作记忆），不属于项目源码
+.workbuddy-ai/
+
+# 签名配置模板不要忽略：keystore.properties.example 是给贡献者参考的
+!keystore.properties.example
