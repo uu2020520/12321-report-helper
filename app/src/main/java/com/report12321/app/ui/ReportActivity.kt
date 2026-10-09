@@ -140,7 +140,6 @@ class ReportActivity : AppCompatActivity() {
 
         // 存入数据持有者
         ReportDataHolder.reportData = reportData
-        ReportDataHolder.addHistory(ReportDataHolder.ReportRecord(data = reportData))
 
         // 半自动举报助手：通过通知栏提供复制按钮，用户在12321网页中手动粘贴。
         ReportHelperNotifier.show(this, reportData)

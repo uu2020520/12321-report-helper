@@ -35,7 +35,6 @@ class AutoFillAccessibilityService : AccessibilityService() {
         private const val TAG = "AutoFillService"
 
         // 12321 官方举报网址
-        const val URL_12321_WEB = "https://www.12321.cn/"
         const val URL_12321_REPORT = "https://m.12321.cn/"
 
         private val SMS_REPORT_ENTRY_KEYWORDS = listOf(
@@ -60,15 +59,6 @@ class AutoFillAccessibilityService : AccessibilityService() {
             "类型", "举报类型", "骚扰类型", "分类",
             "type", "category"
         )
-        private val SUBMIT_KEYWORDS = listOf(
-            "提交", "举报", "确认", "提交举报", "确认举报",
-            "submit", "report", "confirm"
-        )
-        private val CAPTCHA_KEYWORDS = listOf(
-            "验证码", "图形验证码", "短信验证码",
-            "captcha", "verify", "code"
-        )
-
         // 服务实例（用于检查服务是否运行）
         private var instance: AutoFillAccessibilityService? = null
 
@@ -610,71 +600,6 @@ class AutoFillAccessibilityService : AccessibilityService() {
         }
 
         Log.d(TAG, "未找到举报类型选择器")
-        return false
-    }
-
-    /**
-     * 检测页面中是否有验证码
-     */
-    private fun detectCaptcha(rootNode: AccessibilityNodeInfo): Boolean {
-        val captchaNodes = findNodesByText(rootNode, CAPTCHA_KEYWORDS)
-        if (captchaNodes.isNotEmpty()) {
-            return true
-        }
-
-        // 检查是否有 ImageView 可能是图形验证码
-        // （验证码通常是一个小尺寸的 ImageView）
-        val imageViews = findNodesByClassName(rootNode, "android.widget.ImageView")
-        for (iv in imageViews) {
-            val bounds = android.graphics.Rect()
-            iv.getBoundsInScreen(bounds)
-            // 验证码图片通常宽度在 80-300px，高度在 30-100px
-            if (bounds.width() in 80..300 && bounds.height() in 30..100) {
-                return true
-            }
-        }
-
-        return false
-    }
-
-    /**
-     * 点击提交按钮
-     */
-    private fun clickSubmitButton(rootNode: AccessibilityNodeInfo): Boolean {
-        val submitNodes = findNodesByText(rootNode, SUBMIT_KEYWORDS)
-
-        for (node in submitNodes) {
-            if (node.isClickable) {
-                node.performAction(AccessibilityNodeInfo.ACTION_CLICK)
-                Log.d(TAG, "点击了提交按钮: ${node.text}")
-                return true
-            }
-
-            // 如果文本节点本身不可点击，尝试找其可点击的父节点
-            var parent = node.parent
-            var depth = 0
-            while (parent != null && depth < 3) {
-                if (parent.isClickable) {
-                    parent.performAction(AccessibilityNodeInfo.ACTION_CLICK)
-                    Log.d(TAG, "点击了提交按钮的父节点")
-                    return true
-                }
-                parent = parent.parent
-                depth++
-            }
-        }
-
-        // 尝试查找 Button 节点
-        val buttons = findNodesByClassName(rootNode, "android.widget.Button")
-        for (button in buttons) {
-            val buttonText = button.text?.toString()?.lowercase() ?: ""
-            if (SUBMIT_KEYWORDS.any { buttonText.contains(it.lowercase()) }) {
-                button.performAction(AccessibilityNodeInfo.ACTION_CLICK)
-                Log.d(TAG, "通过Button类名找到并点击了提交按钮")
-                return true
-            }
-        }
-
         return false
     }
 

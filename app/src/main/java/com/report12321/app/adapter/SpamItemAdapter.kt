@@ -143,14 +143,6 @@ class SpamItemAdapter : RecyclerView.Adapter<SpamItemAdapter.ViewHolder>() {
     }
 
     /**
-     * 取消全选
-     */
-    fun deselectAll() {
-        selectedItems.clear()
-        notifyDataSetChanged()
-    }
-
-    /**
      * 退出多选模式
      */
     fun exitMultiSelectMode() {

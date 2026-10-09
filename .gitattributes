@@ -1,0 +1,13 @@
+# 统一换行符：仓库内以 LF 存储，检出时按各操作系统自动转换。
+# 避免跨平台协作时因 CRLF/LF 差异导致整个文件显示成改动。
+* text=auto eol=lf
+
+# 二进制文件不做换行符转换
+*.png binary
+*.jpg binary
+*.jks binary
+*.apk binary
+*.jar binary
+
+# Windows 脚本必须保持 CRLF，否则无法执行
+gradlew.bat text eol=crlf

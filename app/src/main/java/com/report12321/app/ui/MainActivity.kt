@@ -27,11 +27,9 @@ import com.google.android.material.chip.ChipGroup
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.report12321.app.R
 import com.report12321.app.adapter.SpamItemAdapter
-import com.report12321.app.model.SpamItem
 import com.report12321.app.model.SpamType
 import com.report12321.app.service.AutoFillAccessibilityService
 import com.report12321.app.util.AccessibilityPrompts
-import com.report12321.app.util.ReportDataHolder
 import com.report12321.app.util.ReportPrefs
 import com.report12321.app.util.SpamDetector
 import com.report12321.app.util.SystemBarInsets
